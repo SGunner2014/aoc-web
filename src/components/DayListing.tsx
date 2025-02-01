@@ -17,8 +17,17 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
-import { CodeRunPanel } from "@/components/CodeRunPanel";
-import { PythonProvider } from "react-py/dist";
+import dynamic from "next/dynamic";
+
+const CodeRunPanel = dynamic(
+  () => import("@/components/CodeRunPanel").then((mod) => mod.CodeRunPanel),
+  { ssr: false },
+);
+
+const PythonProvider = dynamic(
+  () => import("react-py").then((mod) => mod.PythonProvider),
+  { ssr: false },
+);
 
 export interface DayListingProps {
   listing: DayListingInterface;

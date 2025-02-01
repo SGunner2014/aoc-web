@@ -3,7 +3,7 @@
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { FetchedDayListing } from "@/interfaces/Listing";
-import { usePython } from "react-py/dist";
+import { usePython } from "react-py";
 import { runPart1, runPart2, runCode } from "@/components/run-code";
 import { useMemo } from "react";
 
@@ -88,13 +88,13 @@ export const CodeRunPanel = ({
     );
 
     if (input === "tests") {
-      runPython(runCode).catch((err) => console.log(err));
+      runPython(runCode);
     } else if (input === "part1") {
       await writeInputFile();
-      runPython(runPart1).catch((err) => console.log(err));
+      runPython(runPart1);
     } else if (input === "part2") {
       await writeInputFile();
-      runPython(runPart2).catch((err) => console.log(err));
+      runPython(runPart2);
     }
   };
 
